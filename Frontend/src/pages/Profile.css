@@ -1,0 +1,36 @@
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Alineamos los paneles verticalmente */
+  margin-top: 50px;
+}
+
+.left-panel {
+  flex: 1;
+  margin-right: 10px; /* Reducimos el margen para acercar los paneles */
+}
+
+.right-panel {
+  flex: 1;
+  margin-left: 10px; /* Reducimos el margen para acercar los paneles */
+}
+.button {
+  background-color: #F2BB16;
+}
+@media screen and (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    margin: 0; /* Eliminamos el margen para que los paneles estén más cerca */
+  }
+
+  .left-panel {
+    margin-bottom: 20px; /* Añadimos un margen inferior para separar los paneles en dispositivos móviles */
+  }
+}

@@ -1,0 +1,30 @@
+
+body {
+    margin: 0;
+
+}
+
+.nav-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.main-container {
+    margin-top: 0px;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 10px;
+    }
+
+    .footer-container {
+        padding: 10px;
+    }
+}
+

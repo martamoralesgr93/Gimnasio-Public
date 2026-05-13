@@ -1,0 +1,124 @@
+/* CreateWallForm.css */
+
+/* Form wrapper */
+.form-wrap1 {
+ 
+  
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px; /* Limitar el ancho máximo para una mejor presentación */
+  margin: 90px auto; /* Añadir margen superior y centrar */
+  text-align: left;
+}
+.form-wrap1 h1 {
+ margin-left: 10px;
+  color: #F2BB16;
+
+}
+/* Form header */
+.form-wrap1 h3 {
+  color: white; /* Texto en blanco */
+  font-size: 2em;
+  margin-bottom: 10px;
+  
+}
+
+.form-wrap1 p {
+  color: white; /* Texto en blanco */
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+/* Form fields */
+.form-group1 {
+  
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.custom-placeholder, .custom-placeholder1 {
+ 
+  margin-left: 10px;
+  color: white; /* Texto en blanco */
+}
+
+.custom-placeholder1 {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input_activity1, .input_activity {
+  margin-left: 10px;
+  color: white; /* Texto en blanco */
+  background-color: transparent; /* Fondo transparente */
+}
+
+.input_dates, select, .input_user, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #0D5FA6; /* Texto en blanco */
+  background-color: transparent; /* Fondo transparente */
+}
+
+.select {
+  appearance: none;
+  background: transparent;
+  padding: 10px;
+  border: 1px solid #ccc;
+  
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  color: white; /* Texto en blanco */
+}
+
+/* Button container */
+.btn_container {
+  text-align: center;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white; /* Texto en blanco */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+button:disabled {
+  
+  background-color: #49c1a388;
+}
+
+button:hover {
+  background-color: #0056b3;
+  border: 2px solid #ff6464;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .form-wrap1 {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .form-wrap1 h3 {
+    font-size: 1.5em;
+  }
+
+  .input_dates, select, .input_user, textarea {
+    padding: 8px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}

@@ -1,0 +1,20 @@
+.rating-stars {
+  display: flex;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.star {
+  font-size: 24px;
+  color: #ffa502; 
+}
+
+.star.empty {
+  color: #ccc; /* color gris para las estrellas vacías */
+}
