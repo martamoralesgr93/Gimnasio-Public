@@ -1,4 +1,3 @@
-// src/components/ActivitiesHomeCard.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllActivities } from '../services/activities.service';
@@ -11,43 +10,55 @@ export const ActivitiesHomeCard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // efecto que llama al servicio para cargar las actividades, al montar el componente
     (async () => {
-      setRes(await getAllActivities()); //cuando recibe la respuesta setea el res
+      setRes(await getAllActivities());
     })();
   }, []);
 
-  /**cuando recibe la respuesta, que cambia el res haciendo un setRes (linea 15),
-   * actualiza las actividades*/
   useEffect(() => {
-    useActivitiesFeedError(res, setRes, setActivities); //usamos un custom hook que maneja la respuesta, y actualiza las activitys
-  }, [res]); // cada vez que la res cambia, se ejecuta este useEffect.
-
-  useEffect(() => {
-    console.log(activities);
-  }, [activities]); //si lo anterior da un 200, modifica la respueta, el array de dependencias "escucha", y entones se repinta.
+    useActivitiesFeedError(res, setRes, setActivities);
+  }, [res]);
 
   const handleActivityClick = (id) => {
     navigate(`/activities/${id}`);
   };
 
   return (
-    <div className="activities-home-card-container">
-      <h3>Nuestras Actividades</h3>
-      <div className="activities-gallery">
-        {activities.length > 0 &&
-          activities.slice(0, 6).map((activity) => (
-            <div
-              className="activity-card"
-              key={activity._id}
-              onClick={() => handleActivityClick(activity._id)}
-            >
-              <img src={activity.image} alt={activity.name} className="activity-image" />
-              <div className="activity-name">{activity.name}</div>
-            </div>
-          ))}
-        {activities.length === 0 && 'No se han encontrado actividads'}
+    <section className="activities-section">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-eyebrow">ELITE CLASSES</span>
+          <h2 className="section-title">THE <span className="text-gold">SCHEDULE</span></h2>
+        </div>
+
+        <div className="activities-grid">
+          {activities.length > 0 ? (
+            activities.slice(0, 6).map((activity) => (
+              <div
+                className="luxury-activity-card"
+                key={activity._id}
+                onClick={() => handleActivityClick(activity._id)}
+              >
+                <div className="activity-img-container">
+                  <img src={activity.image} alt={activity.name} />
+                  <div className="activity-overlay">
+                    <span className="activity-category">HYROX PERFORMANCE</span>
+                  </div>
+                </div>
+                <div className="activity-meta">
+                  <h3 className="activity-title">{activity.name}</h3>
+                  <div className="activity-footer">
+                    <span className="activity-location">STUDIO AZCA</span>
+                    <span className="material-symbols-outlined">arrow_forward</span>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="no-activities">Initializing performance schedule...</p>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -1,41 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import "./About.css"
 
-
 export const About = () => {
-  
-  return (//ponemos el id para que al hacer referencia a el en el enlace de la nav, nos redirija a este componente
-    <div id="about" className='about-container' > 
-      
-      <div className="contenedor">
-            <img className='image' src="https://res.cloudinary.com/dpw6wsken/image/upload/v1717410889/Superadmin_qmm2bm_6_nsyj94.png"></img>
-            <h3 className='register-button'>¡Tu mejor versión empieza ahora! entrenamiento, comunidad y bienestar:<br></br><Link to="/register"> ¡REGISTRATE desde AQUI!
-            </Link>
-            </h3>
+  return (
+    <section id="about" className='hero-section'>
+      <div className='hero-visual'>
+        <img 
+          className='hero-image immersive-zoom' 
+          src="https://res.cloudinary.com/dpw6wsken/image/upload/v1747239601/picasso_performance_pov.png" 
+          alt="Immersive Picasso Performance Club"
+        />
+        <div className='hero-vignette'></div>
       </div>
-      <div className='about-info'>
+      
+      <div className="container hero-content">
+        <span className='hero-eyebrow'>AZCA | TORRE PICASSO</span>
+        <h1 className='hero-title'>
+          PICASSO <br /> <span className='text-gold'>PERFORMANCE</span>
+        </h1>
+        <p className='hero-subtitle'>
+          The elite HYROX training club for high-performance professionals. Precise discipline. Proven results.
+        </p>
         
-        <div className='info-card'>
-            <div className='card'>
-                <h3>Personalización</h3>
-                <span>Todos nuestros monitores, actividades y demás están orientados a la personalización de cada miembro del gimnasio de manera que puedas cumplir tus objetivos</span>
-            </div>
-            <div className='card'>
-                <h3>Esfuerzo</h3>
-                <span>Todos nuestros monitores, actividades y demás están orientados a la personalización de cada miembro del gimnasio de manera que puedas cumplir tus objetivos</span>
-            </div>
-            <div className='card'>
-                <h3>Rendimiento</h3>
-                <span>Todos nuestros monitores, actividades y demás están orientados a la personalización de cada miembro del gimnasio de manera que puedas cumplir tus objetivos</span>
-            </div>
-            <div className='card'>
-                <h3>Salud</h3>
-                <span>Todos nuestros monitores, actividades y demás están orientados a la personalización de cada miembro del gimnasio de manera que puedas cumplir tus objetivos</span>
-            </div>
+        <div className='hero-actions'>
+          <Link to="/register" className='btn-luxury-primary'>
+            JOIN THE CLUB
+          </Link>
+          <a href="#services" className='btn-luxury-outline'>
+            THE EXPERIENCE
+          </a>
+        </div>
+
+        <div className='hero-stats'>
+          <div className='stat-item'>
+            <span className='stat-value'>HYROX</span>
+            <span className='stat-label'>Official Center</span>
+          </div>
+          <div className='stat-item'>
+            <span className='stat-value'>ELITE</span>
+            <span className='stat-label'>Community</span>
+          </div>
+          <div className='stat-item'>
+            <span className='stat-value'>MADRID</span>
+            <span className='stat-label'>AZCA District</span>
+          </div>
         </div>
       </div>
-      
-    </div>
+    </section>
   );
-  }
+}
+
+export default About;

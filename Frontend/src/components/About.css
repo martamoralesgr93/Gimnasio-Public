@@ -1,161 +1,196 @@
-body {
-  font-family: 'Freeman', sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-}
-
-/* Animación de fade-in para la entrada de la página */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Animación de slide-in desde abajo */
-@keyframes slideInFromBottom {
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  animation: fadeIn 1s ease-in-out;
-}
-
-/* Estilos para la sección "About" */
-.about-container {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-in-out;
-}
-
-.info-card {
-  margin-left: 20px;
-  margin-right: 20px;
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--bg-base);
 }
 
-.card {
-  flex: 1 1 250px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-  animation: slideInFromBottom 1s ease-in-out;
-}
-
-.card h3 {
-  font-size: 2em; /* Tamaño de fuente 2em */
-  color: #F2BB16; /* Color amarillo */
-  text-transform: uppercase; /* Convertir texto a mayúsculas */
-}
-
-.card span {
-  font-size: 1rem;
-  color: whitesmoke;
-}
-
-
-.aboutH1 {
-  font-size: 2.5rem;
-  color: #333333;
-  margin-bottom: 20px;
-}
-
-.contenedor {
-  width: 100%;
-}
-
-.image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.right-aligned {
-  font-size: 1rem;
-  color: #555555;
-  text-align: center;
-}
-
-.register-button {
- 
+.hero-visual {
   position: absolute;
-  top: 340px;
-  left: 1050px;
-  padding: 10px 20px;
-  background-color: #0D5FA6;
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  perspective: 1000px;
 }
 
-/* Animación de vibración */
-@keyframes vibrate {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-2px); }
-  50% { transform: translateX(2px); }
-  75% { transform: translateX(-2px); }
-  100% { transform: translateX(0); }
-}
-.register-button:hover {
-  /* Estilo cuando el botón está en hover */
-  border-radius: 3px;
-  animation: vibrate 0.3s linear infinite;
-  background-color: green;
+.hero-image {
+  width: 110%; /* Slightly larger for the zoom effect */
+  height: 110%;
+  object-fit: cover;
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  filter: brightness(0.6) contrast(1.1);
 }
 
-/* Consulta de medios para dispositivos pequeños */
-@media screen and (max-width: 576px) {
-  .container {
-    
-    padding: 20px;
+/* Immersive 3D Dynamic Animation */
+.immersive-zoom {
+  animation: immersiveAction 20s infinite alternate ease-in-out;
+  transform-style: preserve-3d;
+}
+
+@keyframes immersiveAction {
+  0% {
+    transform: scale(1) translate(0, 0) rotate(0deg);
   }
-
-  .about-container {
-    
-    margin-top: 90px;
-    padding: 10px;
+  50% {
+    transform: scale(1.1) translate(-2%, -2%) rotate(1deg);
   }
-
-  .image {
-    display: none;
+  100% {
+    transform: scale(1.05) translate(2%, 1%) rotate(-0.5deg);
   }
-  .info-card {
-   margin-top: 10px;
 }
-.card {
- 
-  padding: 10px;
-  margin-bottom: 0px;
+
+.hero-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(5, 5, 5, 0.4) 60%,
+    rgba(5, 5, 5, 0.9) 100%
+  );
+  z-index: 2;
 }
-.register-button {
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  padding: 0 var(--spacing-lg);
+  pointer-events: none; /* Allow interaction with background if needed, but here we want buttons clickable */
+}
+
+.hero-content * {
+  pointer-events: auto; /* Re-enable for text and buttons */
+}
+
+.hero-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  color: var(--accent-gold);
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.hero-title {
+  font-size: 6rem;
+  line-height: 0.9;
+  margin-bottom: var(--spacing-lg);
+  font-weight: 700;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  color: var(--text-main);
+  max-width: 600px;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.btn-luxury-primary {
+  padding: 1.4rem 3rem;
+  background-color: var(--accent-gold);
+  color: var(--bg-base);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  transition: var(--transition-smooth);
+  border: 1px solid var(--accent-gold);
+}
+
+.btn-luxury-primary:hover {
+  background-color: transparent;
+  color: var(--accent-gold);
+  transform: translateY(-5px);
+}
+
+.btn-luxury-outline {
+  padding: 1.4rem 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(10px);
+}
+
+.btn-luxury-outline:hover {
+  border-color: var(--accent-gold);
+  background: rgba(197, 160, 40, 0.1);
+  transform: translateY(-5px);
+}
+
+/* Stats section moved to bottom absolute for "protagonist image" feel */
+.hero-stats {
+  position: absolute;
+  bottom: var(--spacing-xxl);
+  left: var(--spacing-lg);
+  display: flex;
+  gap: var(--spacing-xxl);
+  z-index: 3;
+  border-left: 1px solid var(--accent-gold);
+  padding-left: var(--spacing-lg);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.stat-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-gold);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
   
-  width: 400px;
-  margin: 10px auto;
-  margin-bottom: 30px;
-  position: relative; /* Restaura la posición relativa para el flujo normal en dispositivos móviles */
-  top: unset; /* Elimina la posición superior definida para dispositivos móviles */
-  left: unset; /* Elimina la posición izquierda definida para dispositivos móviles */
-  margin-top: 10px; /* Añade un margen superior para separar el botón de las cards en dispositivos móviles */
-  padding: 6px 6px; /* Reduzco el padding aún más para hacer el botón más pequeño en dispositivos móviles */
-  font-size: 12px; /* Reduzco el tamaño de la fuente aún más en dispositivos móviles */
-}
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-stats {
+    display: none; /* Hide stats on mobile hero to keep it clean */
+  }
 }

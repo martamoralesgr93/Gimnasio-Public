@@ -14,7 +14,6 @@ const Figure = ({ activity, user, setActivities }) => {
   const { login } = useAuth();
 
   const [res, setRes] = useState({});
-  const [like, setLike] = useState(false);
   const [rating, setRating] = useState(0);
   const [resRating, setResRating] = useState({});
 
@@ -22,18 +21,15 @@ const Figure = ({ activity, user, setActivities }) => {
     (async () => {
       setResRating(await getReviewsByActivityId(activity._id));
     })();
-  }, []);
+  }, [activity._id]);
 
   useEffect(() => {
     useToggleLikeActivity(res, setRes, login, user, setActivities);
-  }, [res]);
+  }, [res, login, user, setActivities]);
 
   useEffect(() => {
-    useRatingError(resRating, setRating, setResRating); //usamos un custom hook que maneja la respuesta, y actualiza las activitys
-  }, [resRating]); // cada vez que la res cambia, se ejecuta este useEffect.
-
-  useEffect(() => {}, [like]);
-  useEffect(() => {}, [rating]);
+    useRatingError(resRating, setRating, setResRating);
+  }, [resRating]);
 
   const handleLike = async () => {
     setRes(await toggleLikeActivity(activity._id));
@@ -42,36 +38,46 @@ const Figure = ({ activity, user, setActivities }) => {
   const handleLikeAnonymous = () => {
     Swal.fire({
       icon: 'info',
-      title: 'Para guardar tus favoritos regístrate',
-      html: `<a href="/login">Haz click aquí!</a>`,
-      showConfirmButton: true,
+      title: 'REGISTER TO FAVORITE',
+      text: 'Elite performance tracking is available for members.',
+      confirmButtonText: 'JOIN THE CLUB',
+      confirmButtonColor: '#C5A028',
+      background: '#0F0F10',
+      color: '#F5F5F5'
     });
   };
 
   return (
-    <figure>
-      <Link to={`/activities/${activity._id}`}>
-        {activity.image && <img src={activity.image} alt={activity.name} width="200" />}
-        <figcaption>
-          <h2>{activity.name}</h2>
-          <RatingStars
-            rating={rating.avg}
-            count={rating.data?.length || 0}
-            showCount={true}
-            showLinkReviews={false}
-            showReviews={''}
-          />
-          <p>{activity.type}</p>
-        </figcaption>
+    <div className="activity-premium-card">
+      <Link to={`/activities/${activity._id}`} className="activity-link">
+        <div className="activity-media">
+          {activity.image && <img src={activity.image} alt={activity.name} />}
+          <div className="activity-badge">{activity.type?.toUpperCase()}</div>
+        </div>
+        <div className="activity-details">
+          <div className="activity-header">
+            <h2 className="activity-name">{activity.name}</h2>
+            <RatingStars
+              rating={rating.avg}
+              count={rating.data?.length || 0}
+              showCount={true}
+              showLinkReviews={false}
+            />
+          </div>
+          <div className="activity-action-label">VIEW SESSION DETAILS <span className="material-symbols-outlined">arrow_forward</span></div>
+        </div>
       </Link>
-      {user && ( // Muestra el botón solo si el usuario está autenticado
-        <ToggleFavorite
-          handleLike={handleLike}
-          isFav={activity.like.includes(user._id) ? true : false}
-        />
-      )}
-      {!user && <ToggleFavorite handleLike={handleLikeAnonymous} isFav={false} />}
-    </figure>
+      <div className="activity-fav-action">
+        {user ? (
+          <ToggleFavorite
+            handleLike={handleLike}
+            isFav={activity.like.includes(user._id)}
+          />
+        ) : (
+          <ToggleFavorite handleLike={handleLikeAnonymous} isFav={false} />
+        )}
+      </div>
+    </div>
   );
 };
 

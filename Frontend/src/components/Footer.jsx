@@ -1,50 +1,48 @@
 import "./Footer.css";
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubSquare, faTwitterSquare, faLinkedin, faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
 
-export const Footer = ()=>{
-    return(
-    <>
+export const Footer = () => {
+    return (
+        <footer className="luxury-footer">
+            <div className="container">
+                <div className="footer-grid">
+                    <div className="footer-brand">
+                        <div className="brand">
+                            <span className="brand-logo">P</span>
+                            <span className="brand-name">PICASSO <span className="text-gold">PERFORMANCE</span></span>
+                        </div>
+                        <p className="brand-tagline">
+                            The elite HYROX training club in Torre Picasso, Madrid. Engineered for those who demand performance in every aspect of life.
+                        </p>
+                    </div>
 
-           <footer>
+                    <div className="footer-nav">
+                        <h4 className="footer-title">THE CLUB</h4>
+                        <Link to="/" className="footer-link">Experience</Link>
+                        <Link to="/activities/feed" className="footer-link">HYROX Classes</Link>
+                        <Link to="/calendar" className="footer-link">Schedule</Link>
+                        <Link to="/contact" className="footer-link">Contact</Link>
+                    </div>
 
-        <div className="container-footer">
-            <div className="box-footer-info">
-                   <img className="foto" src="https://res.cloudinary.com/dpw6wsken/image/upload/v1716381816/userProyect04FT/Logotipos/3Logotipo_copy-removebg-preview_sduzvg.png" alt=""></img>
-                    <p className="terms">  Este es nuestro proyecto de fin de bootcamp. Hemos realizado una aplicación de un gimnasio con diferentes secciones y un acercamiento a lo que podría ser una red social. Donde la gente comparta sus experiencias en el gimnasio.</p>
+                    <div className="footer-nav">
+                        <h4 className="footer-title">LEGAL</h4>
+                        <span className="footer-link">Privacy Policy</span>
+                        <span className="footer-link">Terms of Service</span>
+                        <span className="footer-link">Cookies</span>
+                    </div>
+
+                    <div className="footer-nav">
+                        <h4 className="footer-title">FOLLOW</h4>
+                        <a href="#" className="footer-link">Instagram</a>
+                        <a href="#" className="footer-link">LinkedIn</a>
+                        <a href="#" className="footer-link">Strava Elite</a>
+                    </div>
+                </div>
+
+                <div className="footer-bottom">
+                    <p className="copyright">© 2026 PICASSO PERFORMANCE CLUB. AZCA DISTRICT, MADRID.</p>
+                </div>
             </div>
-            <div className="box-footer" id="box-footer1">
-                <h2 id="title-footer">Ayuda</h2>
-                <Link to="/contact" className="link-footer">Contáctanos</Link>
-                <Link to="/" className="link-footer">Sobre Nosotros</Link>
-                <p className="text-footer">Politicas de Privacidad</p>
-                <p className="text-footer">Condiciones de uso</p>
-
-            </div>
-
-            <div className="box-footer">
-                <h2 id="title-footer">Proyecto</h2>
-                <a className="link-footer" href="https://github.com/ProyectoGymNeoland/Gimnasio" target="_blank">Github</a>
-                <p className="text-footer">Documentación</p>
-                <a className="link-footer" href="https://neoland.es/" target="_blank">Escuela</a>
-                <p className="text-footer">Integrantes</p>
-            </div>
-<div className="box-footer">
-                <h2 id="title-footer">Redes Sociales</h2>
-                <a className="link-footer" href="https://linktr.ee/IntegrantesProyectoGym" target="_blank"><FontAwesomeIcon icon={faGithubSquare} />  Githubs</a>
-                <p className="text-footer"><FontAwesomeIcon icon={faTwitterSquare} />  Twitter</p>
-                <a className="link-footer" href="https://linktr.ee/linkedinintegrantesproyectogym" target="_blank"><FontAwesomeIcon icon={faLinkedin} />  Linkedins</a>
-                <p className="text-footer"><FontAwesomeIcon icon={faInstagramSquare} />  Instagram</p>
-            </div>
-
-        </div>
-
-        <div className="box-copyright">
-            <hr className="line"/>
-            <p className="copyright">Todos los derechos reservados © 2024 <b>ProyectoGym</b></p>
-        </div>
-    </footer>
-    </>
+        </footer>
     );
 }

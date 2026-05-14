@@ -1,75 +1,69 @@
-import React, { useState } from 'react';
-import './GymServices.css'; // Importa el archivo CSS
+import React from 'react';
+import './GymServices.css';
 
 const GymServices = () => {
-  const [modalContent, setModalContent] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const services = [
+  const programs = [
     { 
-        title: "PISTAS", 
-        description: "Disfruta de nuestras pistas de tenis y pádel.", 
-        icon: "https://res.cloudinary.com/dpw6wsken/image/upload/v1717259633/Padel_f6dhzk.png" 
+        id: "01",
+        title: "BEFORE OFFICE", 
+        tagline: "High-Intensity Morning Ritual",
+        description: "07:00 AM - Precision HYROX training designed to activate executive performance before the first meeting.", 
     },
     { 
-        title: "CLASES COLECTIVAS", 
-        description: "Participa en nuestras clases colectivas para todos los niveles.", 
-        icon: "https://res.cloudinary.com/dpw6wsken/image/upload/v1717259633/Maquinas_b9d9ua.png" 
+        id: "02",
+        title: "LUNCH EXPRESS", 
+        tagline: "45-Minute Efficiency",
+        description: "Optimized sessions for Torre Picasso professionals. High impact, zero time wasted. Shower and back in 60.", 
     },
     { 
-        title: "ASESORAMIENTO", 
-        description: "Entrena con nuestros expertos y alcanza tus objetivos.", 
-        icon: "https://res.cloudinary.com/dpw6wsken/image/upload/v1717259633/Monitor_shvuxv.png" 
+        id: "03",
+        title: "AFTERWORK HYROX", 
+        tagline: "The Ultimate Reset",
+        description: "Decompress through intense physical challenge. Join the Azca corporate elite in our signature HYROX sessions.", 
     },
     { 
-        title: "SALA DE MUSCULACIÓN", 
-        description: "Aprovecha nuestra maquinaria de última generación.", 
-        icon: "https://res.cloudinary.com/dpw6wsken/image/upload/v1717259633/Mancuerna_ohtvns.png" 
+        id: "04",
+        title: "PRIVATE COACHING", 
+        tagline: "Bespoke Performance",
+        description: "One-on-one sessions tailored to your biometric profile and demanding corporate schedule.", 
     },
     { 
-        title: "CAFETERÍA", 
-        description: "Pronto podrás disfrutar de nuestra nueva cafetería.", 
-        icon: "https://res.cloudinary.com/dpw6wsken/image/upload/v1717259633/cafeteria_wydskk.png" 
+        id: "05",
+        title: "ELITE RECOVERY", 
+        tagline: "Bio-Optimization",
+        description: "Advanced recovery protocols to maintain peak cognitive and physical performance throughout the week.", 
     },
     { 
-        title: "NUTRICIÓN", 
-        description: "Asesoramiento nutricional personalizado próximamente.", 
-        icon: "https://res.cloudinary.com/dpw6wsken/image/upload/v1717259633/stethoscope_jetcqs.png" 
+        id: "06",
+        title: "CORPORATE TEAMS", 
+        tagline: "Financial District Unity",
+        description: "Exclusive programs for consulting and finance firms looking to foster high-performance culture.", 
     },
   ];
 
-  const openModal = (service) => {
-    setModalContent(service.description);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalContent(null);
-  };
-
   return (
-    <div className="gym-services" style={{ backgroundImage: 'url(https://res.cloudinary.com/dpw6wsken/image/upload/v1717408068/pexels-willpicturethis-1954524_lon9hj_crkgyo.png)', backgroundSize: 'cover' }}>
-      <div className="service-title">
-        SERVICIOS DE ENERGY CENTER
-      </div>
-      <div className="services-grid">
-        {services.map((service, index) => (
-          <div key={index} className="service-box" onClick={() => openModal(service)}>
-            <img src={service.icon} alt={service.title} className="service-icon" />
-            {service.title}
-          </div>
-        ))}
-      </div>
-      {isModalOpen && (
-        <div className="modal" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <span className="close-button" onClick={closeModal}>&times;</span>
-            <p>{modalContent}</p>
-          </div>
+    <section id="services" className="programs-section">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-eyebrow">PROGRAMS</span>
+          <h2 className="section-title">ENGINEERED FOR <br /><span className="text-gold">PERFORMANCE</span></h2>
         </div>
-      )}
-    </div>
+
+        <div className="programs-grid">
+          {programs.map((program) => (
+            <div key={program.id} className="program-card">
+              <div className="program-id">{program.id}</div>
+              <div className="program-content">
+                <span className="program-tagline">{program.tagline}</span>
+                <h3 className="program-title">{program.title}</h3>
+                <p className="program-description">{program.description}</p>
+                <button className="program-cta">LEARN MORE</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

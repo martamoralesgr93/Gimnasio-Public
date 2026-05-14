@@ -1,19 +1,129 @@
-@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
+:root {
+  /* Colors - Picasso Performance Palette */
+  --bg-base: #050505;
+  --bg-surface: #0F0F10;
+  --bg-card: #161617;
+  
+  --accent-gold: #C5A028; /* Matte Champagne */
+  --accent-gold-light: #D4AF37;
+  --accent-gold-dark: #A68A20;
+  
+  --text-main: #F5F5F5;
+  --text-secondary: #A0A0A0;
+  --text-muted: #666666;
+  
+  --border-light: rgba(255, 255, 255, 0.05);
+  --border-gold: rgba(197, 160, 40, 0.2);
+  
+  /* Shadows */
+  --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* Spacing & Sizing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+  --spacing-xxl: 80px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  
+  /* Transition */
+  --transition-smooth: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+}
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-#root {
-  font-family: 'Freeman', sans-serif;
-  color: #ffffff;
-  background-color:#03090f;
-  margin: 0;
-  line-height: 1.5;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-base);
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  transition: var(--transition-smooth);
+}
+
+ul {
+  list-style: none;
+}
+
+/* Base Components */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.section-padding {
+  padding: var(--spacing-xxl) 0;
+}
+
+/* Typography Utilities */
+.text-gold { color: var(--accent-gold); }
+.text-serif { font-family: 'Playfair Display', serif; }
+.text-uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
+.text-center { text-align: center; }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  :root {
+    --spacing-xxl: 60px;
+  }
+  
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+}

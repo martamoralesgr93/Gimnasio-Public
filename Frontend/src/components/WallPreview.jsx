@@ -1,51 +1,55 @@
 import React from 'react';
 import './WallPreview.css';
+import { Link } from 'react-router-dom';
 
 export const WallPreview = () => {
-    const walls = [
+    const insights = [
       {
-        name: 'Nutrición',
-        image:
-          'https://res.cloudinary.com/dpw6wsken/image/upload/v1717280089/Proyecto_nuevo_7_wlzqdu.png',
-        description:
-          'Recetas saludables y guías alimenticias para complementar tu entrenamiento y mejorar tu bienestar.',
+        name: 'HYROX Tactics',
+        image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1717280089/Proyecto_nuevo_7_wlzqdu.png',
+        description: 'Elite strategies for the sled push and burpee broad jumps. Master the transition zones.',
       },
       {
-        name: 'Media Maratón',
-        image:
-          'https://res.cloudinary.com/dpw6wsken/image/upload/v1717280090/Proyecto_nuevo_6_l5sn9m.png',
-        description:
-          'Únete al muro para compartir tus sesiones de entrenamiento para la media maratón. ¡Vamos a mejorar nuestras marcas personales!',
+        name: 'Executive Biohacking',
+        image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1717280090/Proyecto_nuevo_6_l5sn9m.png',
+        description: 'Optimizing sleep and nutrition for the high-pressure corporate environment of Madrid.',
       },
       {
-        name: '¡Verano!',
-        image:
-          'https://res.cloudinary.com/dpw6wsken/image/upload/v1717280085/Proyecto_nuevo_8_jg051l.png',
-        description:
-          'Si quieres estar en formar para el verano, en este grupo los monitores te dan los mejores consejos y recomendaciones.',
+        name: 'AZCA District Run',
+        image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1717280085/Proyecto_nuevo_8_jg051l.png',
+        description: 'Join the community for pre-office interval training around the financial district.',
       },
       {
-        name: 'Las kdd',
-        image:
-          'https://res.cloudinary.com/dpw6wsken/image/upload/v1717280085/Proyecto_nuevo_9_kytmjc.png',
-        description:
-          'Nos encanta el deporte y hacer actividades al aire libre. Aquí entre todo hacemos los mejores planes para disfrutar entrenando',
+        name: 'Performance Data',
+        image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1717280085/Proyecto_nuevo_9_kytmjc.png',
+        description: 'Deep dives into VO2 max and recovery metrics for our top tier performers.',
       },
     ];
 
     return (
-        <div className="wall-preview-container">
-            <h3>¿Y tú que opinas? compartelo en el muro del gym</h3>
-            <div className="walls-grid">
-                {walls.map((wall, index) => (
-                    <div key={index} className="wall-card">
-                        <img src={wall.image} alt={wall.name} />
-                        <h3>{wall.name}</h3>
-                        <p>{wall.description}</p>
-                        <a href="/wall">➔</a>
-                    </div>
-                ))}
+        <section className="insights-preview">
+            <div className="container">
+                <div className="section-header text-center">
+                    <span className="section-eyebrow">COMMUNITY</span>
+                    <h2 className="section-title">ELITE <span className="text-gold">INSIGHTS</span></h2>
+                </div>
+                
+                <div className="insights-grid">
+                    {insights.map((insight, index) => (
+                        <Link to="/wall" key={index} className="insight-card">
+                            <div className="insight-image-wrapper">
+                                <img src={insight.image} alt={insight.name} className="insight-image" />
+                                <div className="insight-overlay"></div>
+                            </div>
+                            <div className="insight-content">
+                                <h3 className="insight-name">{insight.name}</h3>
+                                <p className="insight-description">{insight.description}</p>
+                                <span className="insight-link">EXPLORE INSIGHT <span className="material-symbols-outlined">arrow_forward</span></span>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 };
