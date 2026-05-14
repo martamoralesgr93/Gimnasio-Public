@@ -48,35 +48,55 @@ const ActivityDetail = ({ activity, setActivity }) => {
   }
 
   return (
-    <div className="activity-detail">
-      <h1>{activity.name}</h1>
-      <p className="spots">Número de plazas: {activity.spots}</p>
-      <p className="type">Tipo de actividad: {activity.type}</p>
-      <p className="type"></p>
-      <img src={activity.image} alt={activity.name} />
-      <h3>Te contamos en qué consiste</h3>
-      <p className="description">{activity.description}</p>
-      <RatingStars
-        rating={rating.avg}
-        count={rating.data?.length || 0}
-        showCount={true}
-        showLinkReviews={true}
-        showReviews={showReviewsHandleClick}
-      />
-      {user && (
-        <>
-          <button onClick={handleToggleCreateReview}>Crear Review</button>
-          {showCreateReview && (
-            <CreateReview
-              activityId={activity._id}
-              setShowCreateReview={setShowCreateReview}
-              reloadReviews={reloadReviews}
-              setActivity={setActivity}
+    <div className="activity-detail-page container">
+      <div className="activity-detail-header">
+        <h1 className="text-serif">{activity.name}</h1>
+        <div className="activity-meta-pills">
+          <span className="pill">CAPACITY: {activity.spots}</span>
+          <span className="pill text-gold">DISCIPLINE: {activity.type}</span>
+        </div>
+      </div>
+
+      <div className="activity-detail-grid">
+        <div className="activity-image-wrap">
+          <img src={activity.image} alt={activity.name} className="premium-image" />
+        </div>
+
+        <div className="activity-info-wrap">
+          <h3 className="text-uppercase letter-spacing-lg">Session Brief</h3>
+          <p className="activity-description">{activity.description}</p>
+          
+          <div className="activity-rating-wrap">
+            <RatingStars
+              rating={rating.avg}
+              count={rating.data?.length || 0}
+              showCount={true}
+              showLinkReviews={true}
+              showReviews={showReviewsHandleClick}
             />
+          </div>
+
+          {user && (
+            <div className="activity-actions">
+              <button className="btn-luxury-outline" onClick={handleToggleCreateReview}>
+                {showCreateReview ? 'CLOSE REVIEW' : 'SUBMIT PERFORMANCE REVIEW'}
+              </button>
+              {showCreateReview && (
+                <CreateReview
+                  activityId={activity._id}
+                  setShowCreateReview={setShowCreateReview}
+                  reloadReviews={reloadReviews}
+                  setActivity={setActivity}
+                />
+              )}
+            </div>
           )}
-        </>
-      )}
-      <div>{showReviews && <Reviews reviews={rating.data} />}</div>
+        </div>
+      </div>
+      
+      <div className="activity-reviews-section">
+        {showReviews && <Reviews reviews={rating.data} />}
+      </div>
     </div>
   );
 };
